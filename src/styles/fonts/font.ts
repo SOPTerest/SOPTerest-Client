@@ -35,7 +35,7 @@ const getLineHeight = (type: Font["type"]) => {
 };
 
 export const FONT = ({ size, weight, type }: Font) => css`
-  font-family: "AppleSDGothicNeo", "Noto Sans KR", sans-serif;
+  font-family: "Apple SD Gothic Neo";
   font-size: ${size}px;
   font-weight: ${getFontWeight(weight)};
   line-height: ${getLineHeight(type)}px;
@@ -46,6 +46,7 @@ export const FONT_STYLES = {
   B2_REGULAR: FONT({ size: 16, weight: "R", type: "b2" }),
   B3_REGULAR: FONT({ size: 14, weight: "R", type: "b3" }),
   B4_REGULAR: FONT({ size: 12, weight: "R", type: "b4" }),
+  H1_BOLD: FONT({ size: 36, weight: "B", type: "h1" }),
   H2_BOLD: FONT({ size: 20, weight: "B", type: "h2" }),
   H3_BOLD: FONT({ size: 36, weight: "B", type: "h3" }),
 };
