@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Apple SD Gothic Neo Bold'),
+        url('https://cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/fonts/700_AppleSDGothicNeo-Bold.woff2') format('woff2'),
+}
+
+@font-face {
+    font-family: 'Apple SD Gothic Neo';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Apple SD Gothic Neo Regular'),
+        url('https://cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/fonts/500_AppleSDGothicNeo-Regular.woff2') format('woff2'),
+}
