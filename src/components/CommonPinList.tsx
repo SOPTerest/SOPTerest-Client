@@ -15,7 +15,7 @@ export default function CommonPinList({ pinList }: PinProps) {
             return (
               <>
                 <StPinList key={pin.id}>
-                  <StPinImage src={pin.profile_img} />
+                  <StPinImage src={pin.pin_img} />
                 </StPinList>
                 <StViewMoreIconWrapper>
                   <StViewMoreIcon />
@@ -31,7 +31,7 @@ export default function CommonPinList({ pinList }: PinProps) {
             return (
               <>
                 <StPinList key={pin.id}>
-                  <StPinImage src={pin.profile_img} />
+                  <StPinImage src={pin.pin_img} />
                 </StPinList>
                 <StViewMoreIconWrapper>
                   <StViewMoreIcon />
