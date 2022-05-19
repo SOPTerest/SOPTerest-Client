@@ -1,73 +1,100 @@
-import styled from 'styled-components';
-import { ReactComponent as StViewMoreIcon } from '../assets/icons/icon_viewmore.svg';
-import { PinInfo } from '../types/pin';
+import styled, { css } from 'styled-components';
+import { PinBoardInfo, PinInfo } from '../types/pin';
+import { FONT_STYLES } from '../styles/fonts/font';
+import { COLOR } from '../styles/color';
 
-interface PinProps {
-  pinList: PinInfo[];
+interface PinBoardProps {
+  pinBoardList: PinBoardInfo[];
 }
 
-export default function CommonPinList({ pinList }: PinProps) {
+interface PinImageProps {
+  itemIdx: number;
+}
+
+export default function PinBoard({ pinBoardList }: PinBoardProps) {
   return (
-    <StPinWrapper>
-      <StPinLists>
-        {pinList.map((pin) => {
-          if (pin.id < pinList.length / 2) {
-            return (
-              <>
-                <StPinList key={pin.id}>
-                  <StPinImage src={pin.pin_img} alt="pin"/>
-                </StPinList>
-                <StViewMoreIconWrapper>
-                  <StViewMoreIcon />
-                </StViewMoreIconWrapper>
-              </>
-            );
-          }
-        })}
-      </StPinLists>
-      <StPinLists>
-        {pinList.map((pin) => {
-          if (pin.id >= pinList.length / 2) {
-            return (
-              <>
-                <StPinList key={pin.id}>
-                  <StPinImage src={pin.pin_img} />
-                </StPinList>
-                <StViewMoreIconWrapper>
-                  <StViewMoreIcon />
-                </StViewMoreIconWrapper>
-              </>
-            );
-          }
-        })}
-      </StPinLists>
-    </StPinWrapper>
+    <StWrapper>
+      {pinBoardList.map((pin: PinBoardInfo, idx: number) => (
+        <StPinItem key={idx}>
+          <StPinImageBoard>
+            {pin.pinList.map(
+              (pinItem: PinInfo, itemIdx: number) =>
+                itemIdx < 3 && (
+                  <StImageWrapper itemIdx={itemIdx}>
+                    <StPinImage src={pinItem.pin_img} key={itemIdx} />
+                  </StImageWrapper>
+                ),
+            )}
+          </StPinImageBoard>
+          <StPinInfoWrapper>
+            <StPinTitle>{pin.title}</StPinTitle>
+            <StPinCount>핀 {pin.pinList.length}개</StPinCount>
+            <StPinSavedTime>{pin.savedTime}</StPinSavedTime>
+          </StPinInfoWrapper>
+        </StPinItem>
+      ))}
+    </StWrapper>
   );
 }
 
-const FlexColumnWrapper = styled.div`
+const StWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 355px;
+  gap: 6px 9px;
+`;
+const StPinItem = styled.li`
   display: flex;
   flex-direction: column;
 `;
-
-const StPinWrapper = styled.article`
-  display: flex;
-  gap: 8px;
-`;
-const StPinLists = styled(FlexColumnWrapper)`
-  width: 174px;
-`;
-const StPinList = styled(FlexColumnWrapper)`
-  width: inherit;
-  height: fit-content;
-  border: none;
-  border-radius: 17px;
+const StPinImageBoard = styled.article`
+  width: 173px;
+  height: 115px;
+  display: grid;
+  grid-template-columns: 115px 57px;
+  grid-template-rows: 57px 57px;
+  grid-gap: 0.5px 1px;
+  border-radius: 13px;
   overflow: hidden;
 `;
+const StImageWrapper = styled.div<PinImageProps>`
+  width: 115px;
+  height: 115px;
+  ${({ itemIdx }) =>
+    itemIdx === 1 &&
+    css`
+      width: 57px;
+      height: 57px;
+      grid-column: 2/3;
+      grid-row: 1/2;
+    `}
+  ${({ itemIdx }) =>
+    itemIdx === 2 &&
+    css`
+      width: 57px;
+      height: 58px;
+      grid-column: 2/3;
+      grid-row: 2/3;
+    `}
+`;
 const StPinImage = styled.img`
+  width: inherit;
+  height: inherit;
   object-fit: cover;
 `;
-const StViewMoreIconWrapper = styled.div`
+const StPinInfoWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  padding-left: 12px;
+`;
+const StPinTitle = styled.strong`
+  ${FONT_STYLES.B1_BOLD};
+`;
+const StPinCount = styled.p`
+  ${FONT_STYLES.B4_REGULAR};
+  padding-top: 4px;
+`;
+const StPinSavedTime = styled.p`
+  ${FONT_STYLES.B4_REGULAR};
+  color: ${COLOR.GRAY_100};
 `;

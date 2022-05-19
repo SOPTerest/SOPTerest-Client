@@ -4,5 +4,5 @@ export interface PinInfo {
 export interface PinBoardInfo {
   title: string;
   pinList: PinInfo[];
-  saved_time: Date;
+  savedTime: string;
 }
