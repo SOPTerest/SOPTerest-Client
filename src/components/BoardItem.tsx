@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { PinBoardInfo, PinInfo } from '../types/pin';
+import { BoardInfo, BoardPinInfo } from '../types';
 import { FONT_STYLES } from '../styles/fonts/font';
 import { COLOR } from '../styles/color';
 
@@ -7,37 +7,38 @@ interface PinImageProps {
   idx: number;
 }
 
-interface PinItemProps {
-  pin: PinBoardInfo;
+interface BoardItemProps {
+  board: BoardInfo;
 }
 
-export default function PinItem({ pin }: PinItemProps) {
+export default function BoardItem({ board }: BoardItemProps) {
   return (
-    <StPinItem>
-      <StPinImageBoard>
-        {pin.pinList.map(
-          (pinItem: PinInfo, idx: number) =>
-            idx < 3 && (
-              <StImageWrapper idx={idx}>
-                <StPinImage src={pinItem.pin_img} key={idx} />
+    <StWrapper>
+      <StPinImageWrapper>
+        {board.boardList.map(
+          ({ id, pinImg }: BoardPinInfo) =>
+            id < 3 && (
+              <StImageWrapper idx={id}>
+                <StPinImage src={pinImg} key={id} />
               </StImageWrapper>
             ),
         )}
-      </StPinImageBoard>
+      </StPinImageWrapper>
+
       <StPinInfoWrapper>
-        <StPinTitle>{pin.title}</StPinTitle>
-        <StPinCount>핀 {pin.pinList.length}개</StPinCount>
-        <StPinSavedTime>{pin.savedTime}</StPinSavedTime>
+        <StPinTitle>{board.title}</StPinTitle>
+        <StPinCount>핀 {board.boardList.length}개</StPinCount>
+        <StPinSavedTime>{board.savedTime}</StPinSavedTime>
       </StPinInfoWrapper>
-    </StPinItem>
+    </StWrapper>
   );
 }
 
-const StPinItem = styled.li`
+const StWrapper = styled.li`
   display: flex;
   flex-direction: column;
 `;
-const StPinImageBoard = styled.article`
+const StPinImageWrapper = styled.article`
   width: 173px;
   height: 115px;
   display: grid;
