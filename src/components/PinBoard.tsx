@@ -15,7 +15,7 @@ export default function CommonPinList({ pinList }: PinProps) {
             return (
               <>
                 <StPinList key={pin.id}>
-                  <StPinImage src={pin.pin_img} />
+                  <StPinImage src={pin.pin_img} alt="pin"/>
                 </StPinList>
                 <StViewMoreIconWrapper>
                   <StViewMoreIcon />
