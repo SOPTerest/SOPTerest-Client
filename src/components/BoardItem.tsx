@@ -3,10 +3,6 @@ import { BoardInfo, BoardPinInfo } from '../types';
 import { FONT_STYLES } from '../styles/fonts/font';
 import { COLOR } from '../styles/color';
 
-interface PinImageProps {
-  idx: number;
-}
-
 interface BoardItemProps {
   board: BoardInfo;
 }
@@ -15,14 +11,11 @@ export default function BoardItem({ board }: BoardItemProps) {
   return (
     <StWrapper>
       <StPinImageWrapper>
-        {board.boardList.map(
-          ({ id, pinImg }: BoardPinInfo) =>
-            id < 3 && (
-              <StImageWrapper idx={id}>
-                <StPinImage src={pinImg} key={id} />
-              </StImageWrapper>
-            ),
-        )}
+        {board.boardList.slice(0, 3).map(({ id, pinImg }: BoardPinInfo) => (
+          <StImageWrapper idx={id} key={id}>
+            <StPinImage src={pinImg} />
+          </StImageWrapper>
+        ))}
       </StPinImageWrapper>
 
       <StPinInfoWrapper>
@@ -48,7 +41,7 @@ const StPinImageWrapper = styled.article`
   border-radius: 13px;
   overflow: hidden;
 `;
-const StImageWrapper = styled.div<PinImageProps>`
+const StImageWrapper = styled.div<{ idx: number }>`
   width: 115px;
   height: 115px;
   ${({ idx }) =>
