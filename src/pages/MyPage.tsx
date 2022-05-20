@@ -1,7 +1,7 @@
 import PinBoard from '../components/BoardList';
 import { BoardInfo, BoardPinInfo } from '../types';
 
-export default function Pin() {
+export default function MyPage() {
   const boardList: BoardPinInfo[] = [
     {
       id: 0,
