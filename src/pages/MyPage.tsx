@@ -1,3 +1,4 @@
+import MyPageHeader from '../components/MyPageHeader';
 import PinBoard from '../components/BoardList';
 import { BoardInfo, BoardPinInfo } from '../types';
 
@@ -29,5 +30,10 @@ export default function MyPage() {
     { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
     { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
   ];
-  return <PinBoard BoardList={BoardList} />;
+  return (
+    <>
+      <MyPageHeader />
+      <PinBoard BoardList={BoardList} />
+    </>
+  );
 }
