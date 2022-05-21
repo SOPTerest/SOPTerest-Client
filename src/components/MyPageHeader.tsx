@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { COLOR } from '../styles/color';
-import { ReactComponent as SearchIcon } from '../assets/icon_search.svg';
-import { ReactComponent as PlusIcon } from '../assets/icon_plus.svg';
-import { ReactComponent as SettingIcon } from '../assets/icon_setting.svg';
+import { IcSearch, icPlus, icSetting } from '../assets/icons';
 
 function MyPageHeader() {
   return (
@@ -11,8 +9,8 @@ function MyPageHeader() {
         <StSearchInput />
         <StSearchIcon />
       </StSearchBarWrapper>
-      <PlusIcon />
-      <SettingIcon />
+      <StIcon src={icPlus} />
+      <StIcon src={icSetting} />
     </StWrapper>
   );
 }
@@ -36,9 +34,12 @@ const StSearchInput = styled.input`
   border-radius: 24px;
   padding: 16px 35px;
 `;
-const StSearchIcon = styled(SearchIcon)`
+const StSearchIcon = styled(IcSearch)`
   position: absolute;
   top: 16px;
   left: 14px;
+`;
+const StIcon = styled.img`
+  cursor: pointer;
 `;
 export default MyPageHeader;
