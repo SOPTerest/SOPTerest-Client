@@ -1,6 +1,9 @@
 import MyPageHeader from '../components/MyPageHeader';
 import PinBoard from '../components/BoardList';
+import UserInfoContainer from '../components/UserInfoContainer';
 import { BoardInfo, BoardPinInfo } from '../types';
+
+import styled from 'styled-components';
 
 export default function MyPage() {
   const boardList: BoardPinInfo[] = [
@@ -31,9 +34,14 @@ export default function MyPage() {
     { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
   ];
   return (
-    <>
+    <StWrapper>
       <MyPageHeader />
+      <UserInfoContainer />
       <PinBoard BoardList={BoardList} />
-    </>
+    </StWrapper>
   );
 }
+
+const StWrapper = styled.div`
+  margin: 97px 10px 0 10px;
+`;

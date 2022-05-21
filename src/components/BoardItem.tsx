@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { BoardInfo, BoardPinInfo } from '../types';
-import { FONT_STYLES } from '../styles/fonts/font';
+import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 
 interface BoardItemProps {

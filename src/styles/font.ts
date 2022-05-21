@@ -18,11 +18,11 @@ const getFontWeight = (weight: Font['weight']) => {
 const getLineHeight = (type: Font['type']) => {
   switch (type) {
     case 'h1':
-      return 39;
-    case 'h2':
-      return 28;
-    case 'h3':
       return 50;
+    case 'h2':
+      return 39;
+    case 'h3':
+      return 28;
     case 'b1':
       return 22;
     case 'b2':
