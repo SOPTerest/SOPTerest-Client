@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
 import { IcSearch, icPlus, icSetting } from '../assets/icons';
 import { BoardInfo, BoardPinInfo } from '../types';
@@ -57,6 +57,7 @@ export default function MyPage() {
         <StIcon src={icPlus} />
         <StIcon src={icSetting} />
       </StHeader>
+
       <StProfileImage src="https://images.unsplash.com/photo-1638913658828-afb88c3d4d11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
       {userInfo && (
         <StProfileInfoWrapper>
@@ -69,6 +70,12 @@ export default function MyPage() {
         </StProfileInfoWrapper>
       )}
       <StShareButton>공유</StShareButton>
+
+      <StTabWrapper>
+        <StTab active={false}>생성됨</StTab>
+        <StTab active={true}>저장됨</StTab>
+      </StTabWrapper>
+
       <BoardList boardList={boardInfo} />
     </StWrapper>
   );
@@ -150,5 +157,28 @@ const StShareButton = styled.button`
   font-size: 16px;
   background-color: ${COLOR.GRAY_300};
   border-radius: 24px;
-  margin-bottom: 52px;
+`;
+const StTabWrapper = styled.div`
+  display: flex;
+  gap: 31px;
+  margin: 52px 0 25px 0;
+`;
+const StTab = styled.div<{ active: boolean }>`
+  ${FONT_STYLES.B1_BOLD}
+  color:${COLOR.BLACK};
+
+  &::after {
+    ${({ active }) =>
+      active &&
+      css`
+        display: block;
+        content: '';
+        width: 40px;
+        height: 0px;
+        background: #000;
+        border-radius: 10px;
+        margin-top: 10px;
+        border: 2px solid #000000;
+      `}
+  }
 `;
