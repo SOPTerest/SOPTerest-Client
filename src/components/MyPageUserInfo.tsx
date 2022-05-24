@@ -1,19 +1,35 @@
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 
-function UserInfoContainer() {
+interface MyPageUserInfo {
+  userId: string;
+  nickname: string;
+  followerCnt: number;
+  followingCnt: number;
+}
+
+export default function MyPageUserInfo() {
+  const [userInfo, setUserInfo] = useState<MyPageUserInfo>();
+
+  useEffect(() => {
+    setUserInfo({ userId: 'cheeze123', nickname: '치즈', followerCnt: 36, followingCnt: 54 });
+  }, []);
+
   return (
     <StWrapper>
       <StProfileImage src="https://images.unsplash.com/photo-1638913658828-afb88c3d4d11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
-      <StProfileInfoWrapper>
-        <StUserName>치즈</StUserName>
-        <StUserId>@cheeze123</StUserId>
-        <StFollowInfoWrapper>
-          <strong>팔로워 36명</strong>
-          <strong>팔로잉 54명</strong>
-        </StFollowInfoWrapper>
-      </StProfileInfoWrapper>
+      {userInfo && (
+        <StProfileInfoWrapper>
+          <StUserName>{userInfo.nickname}</StUserName>
+          <StUserId>@{userInfo.userId}</StUserId>
+          <StFollowInfoWrapper>
+            <strong>팔로워 {userInfo.followerCnt}명</strong>
+            <strong>팔로잉 {userInfo.followingCnt}명</strong>
+          </StFollowInfoWrapper>
+        </StProfileInfoWrapper>
+      )}
       <StShareButton>공유</StShareButton>
     </StWrapper>
   );
@@ -66,4 +82,3 @@ const StShareButton = styled.button`
   border-radius: 24px;
   margin-bottom: 52px;
 `;
-export default UserInfoContainer;

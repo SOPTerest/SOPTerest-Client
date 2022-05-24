@@ -1,6 +1,6 @@
 import MyPageHeader from '../components/MyPageHeader';
 import PinBoard from '../components/BoardList';
-import UserInfoContainer from '../components/UserInfoContainer';
+import MyPageUserInfo from '../components/MyPageUserInfo';
 import { BoardInfo, BoardPinInfo } from '../types';
 
 import styled from 'styled-components';
@@ -36,7 +36,7 @@ export default function MyPage() {
   return (
     <StWrapper>
       <MyPageHeader />
-      <UserInfoContainer />
+      <MyPageUserInfo />
       <PinBoard BoardList={BoardList} />
     </StWrapper>
   );
