@@ -1,5 +1,5 @@
 import MyPageHeader from '../components/MyPageHeader';
-import PinBoard from '../components/BoardList';
+import BoardList from '../components/BoardList';
 import MyPageUserInfo from '../components/MyPageUserInfo';
 import { BoardInfo, BoardPinInfo } from '../types';
 
@@ -28,7 +28,7 @@ export default function MyPage() {
         'https://images.unsplash.com/photo-1638913658828-afb88c3d4d11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     },
   ];
-  const BoardList: BoardInfo[] = [
+  const boardInfo: BoardInfo[] = [
     { id: 0, title: '자연', boardList: boardList, savedTime: '방금' },
     { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
     { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
@@ -37,11 +37,15 @@ export default function MyPage() {
     <StWrapper>
       <MyPageHeader />
       <MyPageUserInfo />
-      <PinBoard BoardList={BoardList} />
+      <BoardList boardList={boardInfo} />
     </StWrapper>
   );
 }
 
 const StWrapper = styled.div`
-  margin: 97px 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  margin-top: 97px;
 `;
