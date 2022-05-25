@@ -1,8 +1,16 @@
 import MyPageHeader from '../components/MyPageHeader';
 import PinBoard from '../components/BoardList';
 import { BoardInfo, BoardPinInfo } from '../types';
+import BottomSheet from '../components/BottomSheet';
+import { useState } from 'react';
 
 export default function MyPage() {
+  const [open, setOpen] = useState(false);
+
+  const toggleModal = () => {
+    setOpen((prev) => !prev);
+  };
+
   const boardList: BoardPinInfo[] = [
     {
       id: 0,
@@ -34,6 +42,7 @@ export default function MyPage() {
     <>
       <MyPageHeader />
       <PinBoard BoardList={BoardList} />
+      {open && <BottomSheet onToggleModal={toggleModal} />}
     </>
   );
 }

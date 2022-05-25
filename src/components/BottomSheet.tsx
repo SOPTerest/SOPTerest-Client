@@ -4,7 +4,7 @@ import { FONT_STYLES } from '../styles/fonts/font';
 import { BtClose } from '../assets/buttons';
 import { useNavigate } from 'react-router-dom';
 
-export default function BottomSheet({ onCloseModal }: any) {
+export default function BottomSheet({ onToggleModal }: any) {
   const navigate = useNavigate();
 
   const goBoardForm = () => {
@@ -14,7 +14,7 @@ export default function BottomSheet({ onCloseModal }: any) {
   return (
     <StWrapper>
       <StBottomSheetWrapper>
-        <StIcCancel onClick={onCloseModal} />
+        <StIcCancel onClick={onToggleModal} />
         <StButtonFormatWrapper>
           <StBottomSheetTitle>프로필에 추가</StBottomSheetTitle>
         </StButtonFormatWrapper>
@@ -24,7 +24,7 @@ export default function BottomSheet({ onCloseModal }: any) {
         <StMakeTitle>추가</StMakeTitle>
         <StAddBoardOption onClick={goBoardForm}>보드</StAddBoardOption>
         <StButtonFormatWrapper>
-          <StButtonWrapper onClick={onCloseModal} />
+          <StButtonWrapper onClick={onToggleModal} />
         </StButtonFormatWrapper>
       </StBottomSheetWrapper>
     </StWrapper>
