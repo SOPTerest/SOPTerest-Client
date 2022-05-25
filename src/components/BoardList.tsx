@@ -3,22 +3,29 @@ import { BoardInfo } from '../types';
 import BoardItem from './BoardItem';
 
 interface BoardListProps {
-  BoardList: BoardInfo[];
+  boardList: BoardInfo[];
 }
 
-export default function BoardList({ BoardList }: BoardListProps) {
+export default function BoardList({ boardList }: BoardListProps) {
   return (
     <StWrapper>
-      {BoardList.map((board: BoardInfo) => (
-        <BoardItem board={board} key={board.id} />
-      ))}
+      <StBoardListWrapper>
+        {boardList.map((board: BoardInfo) => (
+          <BoardItem board={board} key={board.id} />
+        ))}
+      </StBoardListWrapper>
     </StWrapper>
   );
 }
 
 const StWrapper = styled.div`
+  width: 95%;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+`;
+const StBoardListWrapper = styled.div`
+  display: flex;
   width: 355px;
+  flex-wrap: wrap;
   gap: 6px 9px;
 `;

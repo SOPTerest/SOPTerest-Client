@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { BoardInfo, BoardPinInfo } from '../types';
-import { FONT_STYLES } from '../styles/fonts/font';
+import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 
 interface BoardItemProps {
@@ -32,8 +32,7 @@ const StWrapper = styled.li`
   flex-direction: column;
 `;
 const StPinImageWrapper = styled.article`
-  width: 173px;
-  height: 115px;
+  width: 100%;
   display: grid;
   grid-template-columns: 115px 57px;
   grid-template-rows: 57px 57px;
@@ -42,21 +41,19 @@ const StPinImageWrapper = styled.article`
   overflow: hidden;
 `;
 const StImageWrapper = styled.div<{ idx: number }>`
-  width: 115px;
-  height: 115px;
+  width: 100%;
   ${({ idx }) =>
     idx === 1 &&
     css`
-      width: 57px;
-      height: 57px;
+      height: 100%;
       grid-column: 2/3;
       grid-row: 1/2;
     `}
   ${({ idx }) =>
     idx === 2 &&
     css`
-      width: 57px;
-      height: 58px;
+      width: 100%;
+      height: 100%;
       grid-column: 2/3;
       grid-row: 2/3;
     `}
