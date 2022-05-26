@@ -40,9 +40,6 @@ export default function MyPage() {
     { id: 0, title: '자연', boardList: boardList, savedTime: '방금' },
     { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
     { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
-    { id: 0, title: '자연', boardList: boardList, savedTime: '방금' },
-    { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
-    { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
   ];
   const [userInfo, setUserInfo] = useState<MyPageUserInfo>();
 
@@ -204,7 +201,7 @@ const StTab = styled.div<{ active: boolean }>`
 `;
 const StNavigationWrapper = styled.nav`
   position: sticky;
-  bottom: 10px;
+  bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
