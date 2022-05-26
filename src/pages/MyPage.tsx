@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
-import { IcSearch, IcPlus, icSetting, IcChat, IcHome } from '../assets/icons';
+import { IcSearch, IcPlus, icSetting } from '../assets/icons';
 import { BoardInfo, BoardPinInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 import BoardList from '../components/BoardList';
+import MyPageNavigation from '../components/MyPageNavigation';
 
 interface MyPageUserInfo {
   userId: string;
@@ -77,23 +78,7 @@ export default function MyPage() {
       </StTabWrapper>
 
       <BoardList boardList={boardInfo} />
-
-      <StNavigationWrapper>
-        <IcHome />
-        <StIconWrapper>
-          <StNavIcSearch />
-        </StIconWrapper>
-        <StIconWrapper>
-          <StNavIcPlus />
-        </StIconWrapper>
-        <IcChat />
-        <StIconWrapper>
-          <StNavProfile
-            src="https://images.unsplash.com/photo-1566496875470-68ada46a38c5?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170"
-            alt="profile"
-          />
-        </StIconWrapper>
-      </StNavigationWrapper>
+      <MyPageNavigation />
     </StWrapper>
   );
 }
@@ -109,7 +94,7 @@ const StHeader = styled.header`
   display: flex;
   width: 100%;
   height: 72px;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 `;
 const StSearchBarWrapper = styled.div`
@@ -117,6 +102,7 @@ const StSearchBarWrapper = styled.div`
   align-items: center;
   position: relative;
   width: 70%;
+  margin-left: 10px;
 `;
 const StSearchInput = styled.input`
   width: 100%;
@@ -132,6 +118,7 @@ const StSearchIcon = styled(IcSearch)`
 `;
 const StIcon = styled.img`
   cursor: pointer;
+  margin-right: 10px;
 `;
 const FlexColumnBox = styled.div`
   display: flex;
@@ -198,42 +185,4 @@ const StTab = styled.div<{ active: boolean }>`
         border: 2px solid #000000;
       `}
   }
-`;
-const StNavigationWrapper = styled.nav`
-  position: sticky;
-  bottom: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 264px;
-  height: 60px;
-  background: ${COLOR.WHITE};
-  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.08);
-  border-radius: 30px;
-`;
-const StIconWrapper = styled.div`
-  width: 48px;
-  height: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const StNavIcSearch = styled(IcSearch)`
-  width: 23px;
-  height: 23.5px;
-  & > path {
-    fill: ${COLOR.GRAY_100};
-  }
-`;
-const StNavIcPlus = styled(IcPlus)`
-  width: 24px;
-  height: 24px;
-  & > path {
-    fill: ${COLOR.GRAY_100};
-  }
-`;
-const StNavProfile = styled.img`
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
 `;
