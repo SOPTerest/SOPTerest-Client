@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
-import { IcSearch, icPlus, icSetting } from '../assets/icons';
+import { IcSearch, IcPlus, icSetting, IcChat, IcHome } from '../assets/icons';
 import { BoardInfo, BoardPinInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
@@ -40,6 +40,9 @@ export default function MyPage() {
     { id: 0, title: '자연', boardList: boardList, savedTime: '방금' },
     { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
     { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
+    { id: 0, title: '자연', boardList: boardList, savedTime: '방금' },
+    { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
+    { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
   ];
   const [userInfo, setUserInfo] = useState<MyPageUserInfo>();
 
@@ -54,7 +57,7 @@ export default function MyPage() {
           <StSearchInput />
           <StSearchIcon />
         </StSearchBarWrapper>
-        <StIcon src={icPlus} />
+        <IcPlus />
         <StIcon src={icSetting} />
       </StHeader>
 
@@ -77,6 +80,23 @@ export default function MyPage() {
       </StTabWrapper>
 
       <BoardList boardList={boardInfo} />
+
+      <StNavigationWrapper>
+        <IcHome />
+        <StIconWrapper>
+          <StNavIcSearch />
+        </StIconWrapper>
+        <StIconWrapper>
+          <StNavIcPlus />
+        </StIconWrapper>
+        <IcChat />
+        <StIconWrapper>
+          <StNavProfile
+            src="https://images.unsplash.com/photo-1566496875470-68ada46a38c5?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170"
+            alt="profile"
+          />
+        </StIconWrapper>
+      </StNavigationWrapper>
     </StWrapper>
   );
 }
@@ -181,4 +201,42 @@ const StTab = styled.div<{ active: boolean }>`
         border: 2px solid #000000;
       `}
   }
+`;
+const StNavigationWrapper = styled.nav`
+  position: sticky;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 264px;
+  height: 60px;
+  background: ${COLOR.WHITE};
+  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+`;
+const StIconWrapper = styled.div`
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const StNavIcSearch = styled(IcSearch)`
+  width: 23px;
+  height: 23.5px;
+  & > path {
+    fill: ${COLOR.GRAY_100};
+  }
+`;
+const StNavIcPlus = styled(IcPlus)`
+  width: 24px;
+  height: 24px;
+  & > path {
+    fill: ${COLOR.GRAY_100};
+  }
+`;
+const StNavProfile = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 `;
