@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
-import { IcSearch, icPlus, icSetting } from '../assets/icons';
+import { IcSearch, IcPlus, icSetting } from '../assets/icons';
 import { BoardInfo, BoardPinInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
@@ -61,7 +61,7 @@ export default function MyPage() {
           <StSearchInput />
           <StSearchIcon />
         </StSearchBarWrapper>
-        <img src={icPlus} alt="plus" />
+        <IcPlus />
         <StIcon src={icSetting} />
       </StHeader>
 
