@@ -54,9 +54,11 @@ const StBottomSheetWrapper = styled.div`
   height: 457px;
   border-top-left-radius: 33px;
   border-top-right-radius: 33px;
-  padding: 0px 10px;
-  & > *:not(& > *:first-child),
-  & > *:not(& > *:last-child) {
+  & > *:nth-child(2),
+  & > *:nth-child(3),
+  & > *:nth-child(4),
+  & > *:nth-child(5),
+  & > *:nth-child(6) {
     width: 100%;
     margin-left: 24px;
   }
@@ -99,17 +101,16 @@ const StAddBoardOption = styled.span`
 
 const StAddTitle = styled.span`
   margin-top: 33px;
-  ${FONT_STYLES.B1_BOLD};
+  ${FONT_STYLES.B2_REGULAR}
 `;
 
 const StMakeTitle = styled.span`
   margin-top: 29px;
-  ${FONT_STYLES.B2_REGULAR}
+  ${FONT_STYLES.B1_BOLD};
 `;
 
 const StButtonWrapper = styled.button`
-  position: absolute;
-  bottom: 107px;
+  margin-top: 36px;
   width: 60px;
   height: 48px;
   border-radius: 24px;
@@ -124,7 +125,7 @@ const StButtonWrapper = styled.button`
 
 const StFormatWrapper = styled.div`
   width: 100%;
-  height: 28px;
+  height: 49px;
   position: relative;
   display: flex;
   justify-content: center;
