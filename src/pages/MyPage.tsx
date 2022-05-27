@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
-import { IcSearch, icPlus, icSetting } from '../assets/icons';
+import { IcSearch, IcPlus, icSetting } from '../assets/icons';
 import { BoardInfo, BoardPinInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 import BoardList from '../components/BoardList';
+import MyPageNavigation from '../components/MyPageNavigation';
 
 interface MyPageUserInfo {
   userId: string;
@@ -54,7 +55,7 @@ export default function MyPage() {
           <StSearchInput />
           <StSearchIcon />
         </StSearchBarWrapper>
-        <StIcon src={icPlus} />
+        <IcPlus />
         <StIcon src={icSetting} />
       </StHeader>
 
@@ -77,6 +78,7 @@ export default function MyPage() {
       </StTabWrapper>
 
       <BoardList boardList={boardInfo} />
+      <MyPageNavigation />
     </StWrapper>
   );
 }
@@ -92,7 +94,7 @@ const StHeader = styled.header`
   display: flex;
   width: 100%;
   height: 72px;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 `;
 const StSearchBarWrapper = styled.div`
@@ -100,6 +102,7 @@ const StSearchBarWrapper = styled.div`
   align-items: center;
   position: relative;
   width: 70%;
+  margin-left: 10px;
 `;
 const StSearchInput = styled.input`
   width: 100%;
@@ -115,6 +118,7 @@ const StSearchIcon = styled(IcSearch)`
 `;
 const StIcon = styled.img`
   cursor: pointer;
+  margin-right: 10px;
 `;
 const FlexColumnBox = styled.div`
   display: flex;
