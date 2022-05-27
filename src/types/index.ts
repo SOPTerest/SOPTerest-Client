@@ -8,3 +8,10 @@ export interface BoardInfo {
   boardList: BoardPinInfo[];
   savedTime: string;
 }
+
+export type ToastMode = 'COMPLETE' | 'WARNING' | null;
+
+export interface Toast {
+  mode: ToastMode;
+  message: string;
+}
