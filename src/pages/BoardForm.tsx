@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { IcBack } from '../assets/icons';
 import BoardFormToast from '../components/BoardFormToast';
 import { COLOR } from '../styles/color';
-import { FONT_STYLES } from '../styles/fonts/font';
+import { FONT_STYLES } from '../styles/font';
 
 export default function BoardForm() {
   const navigate = useNavigate();

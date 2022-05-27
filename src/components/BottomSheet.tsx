@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IcCancel } from '../assets/icons';
-import { FONT_STYLES } from '../styles/fonts/font';
+import { FONT_STYLES } from '../styles/font';
 import { useNavigate } from 'react-router-dom';
 import { COLOR } from '../styles/color';
 
