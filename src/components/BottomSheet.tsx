@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { IcCancel } from '../assets/icons';
 import { FONT_STYLES } from '../styles/fonts/font';
 import { useNavigate } from 'react-router-dom';
+import { COLOR } from '../styles/color';
 
 interface BottomSheetProps {
   onToggleModal: () => void;
@@ -45,7 +46,7 @@ const StWrapper = styled.div`
 `;
 
 const StBottomSheetWrapper = styled.div`
-  background-color: white;
+  background-color: ${COLOR.WHITE};
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -111,7 +112,7 @@ const StButtonWrapper = styled.button`
   width: 60px;
   height: 48px;
   border-radius: 24px;
-  background-color: #efefef;
+  background-color: ${COLOR.GRAY_300};
   border: 0;
   outline: 0;
   ${FONT_STYLES.B1_BOLD}
