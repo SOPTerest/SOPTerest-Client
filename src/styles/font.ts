@@ -47,6 +47,6 @@ export const FONT_STYLES = {
   B3_REGULAR: FONT({ size: 14, weight: 'R', type: 'b3' }),
   B4_REGULAR: FONT({ size: 12, weight: 'R', type: 'b4' }),
   H1_BOLD: FONT({ size: 36, weight: 'B', type: 'h1' }),
-  H2_BOLD: FONT({ size: 20, weight: 'B', type: 'h2' }),
-  H3_BOLD: FONT({ size: 36, weight: 'B', type: 'h3' }),
+  H2_BOLD: FONT({ size: 28, weight: 'B', type: 'h2' }),
+  H3_BOLD: FONT({ size: 20, weight: 'B', type: 'h3' }),
 };

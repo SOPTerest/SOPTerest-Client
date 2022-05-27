@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
 import { IcSearch, IcPlus, icSetting } from '../assets/icons';
 import { BoardInfo, BoardPinInfo } from '../types';
+import BottomSheet from '../components/BottomSheet';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 import BoardList from '../components/BoardList';
@@ -15,6 +16,12 @@ interface MyPageUserInfo {
 }
 
 export default function MyPage() {
+  const [open, setOpen] = useState(false);
+
+  const toggleModal = () => {
+    setOpen((prev) => !prev);
+  };
+
   const boardList: BoardPinInfo[] = [
     {
       id: 0,
@@ -79,6 +86,7 @@ export default function MyPage() {
 
       <BoardList boardList={boardInfo} />
       <MyPageNavigation />
+      {open && <BottomSheet onToggleModal={toggleModal} />}
     </StWrapper>
   );
 }
