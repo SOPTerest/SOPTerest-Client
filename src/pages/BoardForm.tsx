@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IcBack } from '../assets/icons';
 import BoardFormToast from '../components/BoardFormToast';
+import { COLOR } from '../styles/color';
 import { FONT_STYLES } from '../styles/fonts/font';
 
 export default function BoardForm() {
@@ -81,8 +82,8 @@ const StCreateButton = styled.button<{ isActive: boolean }>`
   top: 23px;
   right: 10px;
   border-radius: 16px;
-  background-color: ${(props) => (props.isActive ? '#D32D2F' : '#CDCDCD')};
-  color: ${(props) => (props.isActive ? '#FFFFFF' : '#767676')};
+  background-color: ${(props) => (props.isActive ? `${COLOR.RED}` : `${COLOR.GRAY_200}`)};
+  color: ${(props) => (props.isActive ? `${COLOR.WHITE}` : `${COLOR.GRAY_100}`)};
   border: 0;
   outline: 0;
   &:hover {
@@ -93,8 +94,8 @@ const StCreateButton = styled.button<{ isActive: boolean }>`
 const StFormWrapper = styled.div`
   width: calc(100% - 20px);
   height: 85px;
-  border-top: 1px solid #cdcdcd;
-  border-bottom: 1px solid #cdcdcd;
+  border-top: 1px solid ${COLOR.GRAY_200};
+  border-bottom: 1px solid ${COLOR.GRAY_200};
   padding: 11px 14px;
   box-sizing: border-box;
 `;
@@ -111,7 +112,7 @@ const StInput = styled.input`
   padding-left: 11px;
   ${FONT_STYLES.H3_BOLD}
   &::placeholder {
-    color: #cdcdcd;
+    color: ${COLOR.GRAY_200};
   }
 `;
 
