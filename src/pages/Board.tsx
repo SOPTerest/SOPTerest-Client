@@ -13,7 +13,7 @@ export default function Board() {
       <StTitle>바닷가</StTitle>
       <StCreateAt>방금</StCreateAt>
       <StProfile>
-        <img src={MOCK_DATA.USER.image} />
+        <img src={MOCK_DATA.USER.image} alt="profile-image" />
         <img src={icPlus} />
       </StProfile>
       <StButtonWrapper>
