@@ -60,7 +60,7 @@ const StBottomSheetWrapper = styled.div`
   & > *:nth-child(5),
   & > *:nth-child(6) {
     width: 100%;
-    margin-left: 24px;
+    padding-left: 24px;
   }
 `;
 
