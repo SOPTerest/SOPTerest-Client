@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { IcCancel } from '../assets/icons';
 import { FONT_STYLES } from '../styles/fonts/font';
-import { BtClose } from '../assets/buttons';
 import { useNavigate } from 'react-router-dom';
 
-export default function BottomSheet({ onToggleModal }: any) {
+interface BottomSheetProps {
+  onToggleModal: () => void;
+}
+
+export default function BottomSheet({ onToggleModal }: BottomSheetProps) {
   const navigate = useNavigate();
 
   const goBoardForm = () => {
@@ -15,17 +18,17 @@ export default function BottomSheet({ onToggleModal }: any) {
     <StWrapper>
       <StBottomSheetWrapper>
         <StIcCancel onClick={onToggleModal} />
-        <StButtonFormatWrapper>
+        <StFormatWrapper>
           <StBottomSheetTitle>프로필에 추가</StBottomSheetTitle>
-        </StButtonFormatWrapper>
+        </StFormatWrapper>
         <StAddTitle>만들기</StAddTitle>
         <StMakeWebOption>웹사이트</StMakeWebOption>
         <StMakePictureOption>사진</StMakePictureOption>
         <StMakeTitle>추가</StMakeTitle>
         <StAddBoardOption onClick={goBoardForm}>보드</StAddBoardOption>
-        <StButtonFormatWrapper>
-          <StButtonWrapper onClick={onToggleModal} />
-        </StButtonFormatWrapper>
+        <StFormatWrapper>
+          <StButtonWrapper onClick={onToggleModal}>닫기</StButtonWrapper>
+        </StFormatWrapper>
       </StBottomSheetWrapper>
     </StWrapper>
   );
@@ -102,15 +105,22 @@ const StMakeTitle = styled(StTitleFormat)`
   ${FONT_STYLES.B2_REGULAR}
 `;
 
-const StButtonWrapper = styled(BtClose)`
+const StButtonWrapper = styled.button`
   position: absolute;
   bottom: 107px;
+  width: 60px;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #efefef;
+  border: 0;
+  outline: 0;
+  ${FONT_STYLES.B1_BOLD}
   &:hover {
     cursor: pointer;
   }
 `;
 
-const StButtonFormatWrapper = styled.div`
+const StFormatWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
