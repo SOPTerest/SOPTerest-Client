@@ -21,6 +21,7 @@ export default function BoardForm() {
   const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 5) {
       setIsToast(true);
+      return;
     }
     e.target.value.length > 0 ? setIsActive(true) : setIsActive(false);
     setInput(e.target.value);
@@ -44,10 +45,8 @@ export default function BoardForm() {
         </StCreateButton>
       </StHeaderWrapper>
       <StFormWrapper>
-        <StFormCover>
-          <StFormTitle>보드 이름</StFormTitle>
-          <StInput type="text" placeholder="추가" onChange={changeInput} value={input} />
-        </StFormCover>
+        <StFormTitle>보드 이름</StFormTitle>
+        <StInput type="text" placeholder="추가" onChange={changeInput} value={input} />
       </StFormWrapper>
       {isToast && <BoardFormToast />}
     </StWrapper>
@@ -92,15 +91,12 @@ const StCreateButton = styled.button<{ isActive: boolean }>`
 `;
 
 const StFormWrapper = styled.div`
-  width: 100%;
+  width: calc(100% - 20px);
   height: 85px;
-`;
-
-const StFormCover = styled.div`
-  margin: 0px 10px;
   border-top: 1px solid #cdcdcd;
   border-bottom: 1px solid #cdcdcd;
   padding: 11px 14px;
+  box-sizing: border-box;
 `;
 
 const StFormTitle = styled.b`
