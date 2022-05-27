@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
-import { IcSearch, IcPlus, icSetting } from '../assets/icons';
+import { IcSearch, icPlus, icSetting } from '../assets/icons';
 import { BoardInfo, BoardPinInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 import BoardList from '../components/BoardList';
 import MyPageNavigation from '../components/MyPageNavigation';
+import BottomSheet from '../components/BottomSheet';
 
 interface MyPageUserInfo {
   userId: string;
@@ -43,6 +44,11 @@ export default function MyPage() {
     { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
   ];
   const [userInfo, setUserInfo] = useState<MyPageUserInfo>();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const toggleModal = () => {
+    setOpen((prev: boolean) => !prev);
+  };
 
   useEffect(() => {
     setUserInfo({ userId: 'cheeze123', nickname: '치즈', followerCnt: 36, followingCnt: 54 });
@@ -55,7 +61,7 @@ export default function MyPage() {
           <StSearchInput />
           <StSearchIcon />
         </StSearchBarWrapper>
-        <IcPlus />
+        <img src={icPlus} alt="plus" />
         <StIcon src={icSetting} />
       </StHeader>
 
@@ -78,7 +84,8 @@ export default function MyPage() {
       </StTabWrapper>
 
       <BoardList boardList={boardInfo} />
-      <MyPageNavigation />
+      <MyPageNavigation toggleModal={toggleModal} />
+      {open && <BottomSheet onToggleModal={toggleModal} />}
     </StWrapper>
   );
 }

@@ -1,4 +1,4 @@
-import { IcBack, icIdeaMore, icOrganize, IcPlus, IcViewMore } from '../assets/icons';
+import { IcBack, icIdeaMore, icOrganize, icPlus, IcViewMore } from '../assets/icons';
 import styled from 'styled-components';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
@@ -14,7 +14,7 @@ export default function Board() {
       <StCreateAt>방금</StCreateAt>
       <StProfile>
         <img src={MOCK_DATA.USER.image} alt="profile-image" />
-        <IcPlus />
+        <img src={icPlus} />
       </StProfile>
       <StButtonWrapper>
         <div>

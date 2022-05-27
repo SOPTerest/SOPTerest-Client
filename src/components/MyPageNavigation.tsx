@@ -1,15 +1,11 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import { IcSearchGray1, IcPlusGray1, IcChat, IcHome } from '../assets/icons';
-import BottomSheet from '../components/BottomSheet';
 import { COLOR } from '../styles/color';
 
-export default function MyPageNavigation() {
-  const [open, setOpen] = useState(false);
-
-  const toggleModal = () => {
-    setOpen((prev) => !prev);
-  };
+interface MyPageNavigationProps {
+  toggleModal: () => void;
+}
+export default function MyPageNavigation({ toggleModal }: MyPageNavigationProps) {
   return (
     <>
       <StNavigationWrapper>
@@ -22,7 +18,6 @@ export default function MyPageNavigation() {
           alt="profile"
         />
       </StNavigationWrapper>
-      {open && <BottomSheet onToggleModal={toggleModal} />}
     </>
   );
 }
