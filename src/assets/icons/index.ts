@@ -1,5 +1,6 @@
 export { ReactComponent as IcSearch } from './icon_search.svg';
 export { ReactComponent as IcPlus } from './icon_plus.svg';
+export { default as icPlus } from './icon_plus.svg';
 export { ReactComponent as IcSearchGray1 } from './icon_search_gray_1.svg';
 export { ReactComponent as IcPlusGray1 } from './icon_plus_gray_1.svg';
 export { default as icSetting } from './icon_setting.svg';
@@ -10,3 +11,4 @@ export { default as icOrganize } from './icon_organize.svg';
 export { ReactComponent as IcViewMore } from './icon_viewmore.svg';
 export { ReactComponent as IcChat } from './icon_chat.svg';
 export { ReactComponent as IcHome } from './icon_home.svg';
+export { ReactComponent as IcBlueCheck } from './icon_blue_check.svg';
