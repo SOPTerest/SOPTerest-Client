@@ -1,8 +1,6 @@
-### SOPTerest-Client
+# SOPTerest-Client
 
----
-
-#### 브랜치 전략📚
+## 브랜치 전략📚
 
 git flow - branch
 
@@ -10,11 +8,15 @@ main
 
 feat/#이슈번호
 
-#### 기술스택⚙️
+<br/>
 
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"><img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+## 기술스택⚙️
 
-#### 커밋 컨벤션🚨
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+
+<br/>
+
+## 커밋 컨벤션🚨
 
 | 커밋명    | 용도                                                          |
 | --------- | ------------------------------------------------------------- |
@@ -26,7 +28,9 @@ feat/#이슈번호
 | fix       | 버그 수정에 대한 커밋                                         |
 | refactor  | 코드 리팩토링에 대한 커밋                                     |
 
-#### 코드 컨벤션🚨
+<br/>
+
+## 코드 컨벤션🚨
 
 1.  컴포넌트 선언 방식
 
@@ -129,7 +133,9 @@ feat/#이슈번호
 
     - Wrapper✅ Container Box
 
-#### 역할분배🏃🏃
+<br/>
+
+## 역할분배🏃🏃
 
 | 팀원   | 역할             |
 | ------ | :--------------- |
