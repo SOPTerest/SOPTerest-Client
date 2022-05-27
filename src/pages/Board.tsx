@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 import { MOCK_DATA } from '../services/mock/data';
+import useToast from '../hooks/useToast';
 
 export default function Board() {
+  const { showToast } = useToast();
   return (
     <StWrapper>
+      <button onClick={() => showToast('보드를 만들었습니다!', 'COMPLETE')}>토스트 test</button>
       <StHeader>
         <IcBack /> <IcViewMore />
       </StHeader>
