@@ -11,7 +11,7 @@ export default function BoardForm() {
 
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isToast, setIsToast] = useState<boolean>(false);
-  const [input, setInput] = useState<string>('');
+  const [title, setTitle] = useState<string>('');
 
   useEffect(() => {
     if (isToast) {
@@ -19,17 +19,17 @@ export default function BoardForm() {
     }
   }, [isToast]);
 
-  const changeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length > 5) {
       setIsToast(true);
       return;
     }
-    e.target.value.length > 0 ? setIsActive(true) : setIsActive(false);
-    setInput(e.target.value);
+    setIsActive(e.target.value.length > 0);
+    setTitle(e.target.value);
   };
 
   const goBoard = () => {
-    if (input.length > 0) navigate(`/board/id들어갈곳`);
+    if (title.length > 0) navigate(`/board/id들어갈곳`);
   };
 
   const goBack = () => {
@@ -47,7 +47,7 @@ export default function BoardForm() {
       </StHeaderWrapper>
       <StFormWrapper>
         <StFormTitle>보드 이름</StFormTitle>
-        <StInput type="text" placeholder="추가" onChange={changeInput} value={input} />
+        <StInput type="text" placeholder="추가" onChange={handleChangeInput} value={title} />
       </StFormWrapper>
       {isToast && <BoardFormToast />}
     </StWrapper>
