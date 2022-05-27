@@ -18,8 +18,8 @@ export default function BottomSheet({ onToggleModal }: BottomSheetProps) {
   return (
     <StWrapper>
       <StBottomSheetWrapper>
-        <StIcCancel onClick={onToggleModal} />
         <StFormatWrapper>
+          <StIcCancel onClick={onToggleModal} />
           <StBottomSheetTitle>프로필에 추가</StBottomSheetTitle>
         </StFormatWrapper>
         <StAddTitle>만들기</StAddTitle>
@@ -27,9 +27,7 @@ export default function BottomSheet({ onToggleModal }: BottomSheetProps) {
         <StMakePictureOption>사진</StMakePictureOption>
         <StMakeTitle>추가</StMakeTitle>
         <StAddBoardOption onClick={goBoardForm}>보드</StAddBoardOption>
-        <StFormatWrapper>
-          <StButtonWrapper onClick={onToggleModal}>닫기</StButtonWrapper>
-        </StFormatWrapper>
+        <StButtonWrapper onClick={onToggleModal}>닫기</StButtonWrapper>
       </StBottomSheetWrapper>
     </StWrapper>
   );
@@ -48,12 +46,20 @@ const StWrapper = styled.div`
 const StBottomSheetWrapper = styled.div`
   background-color: ${COLOR.WHITE};
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   bottom: 0;
   width: 100%;
   height: 457px;
   border-top-left-radius: 33px;
   border-top-right-radius: 33px;
   padding: 0px 10px;
+  & > *:not(& > *:first-child),
+  & > *:not(& > *:last-child) {
+    width: 100%;
+    margin-left: 24px;
+  }
 `;
 
 const StIcCancel = styled(IcCancel)`
@@ -66,43 +72,38 @@ const StIcCancel = styled(IcCancel)`
 `;
 
 const StBottomSheetTitle = styled.h3`
-  margin-top: 21px;
-  ${FONT_STYLES.H3_BOLD}
-`;
-
-const StOptionFormat = styled.h3`
   position: absolute;
-  left: 24px;
+  top: 21px;
+  left: 50%;
+  transform: translateX(-50%);
   ${FONT_STYLES.H3_BOLD}
 `;
 
-const StMakeWebOption = styled(StOptionFormat)`
-  top: 110px;
+const StMakeWebOption = styled.span`
+  margin-top: 9px;
+  ${FONT_STYLES.H3_BOLD}
 `;
 
-const StMakePictureOption = styled(StOptionFormat)`
-  top: 153px;
+const StMakePictureOption = styled.span`
+  margin-top: 15px;
+  ${FONT_STYLES.H3_BOLD}
 `;
 
-const StAddBoardOption = styled(StOptionFormat)`
-  top: 238px;
+const StAddBoardOption = styled.span`
+  margin-top: 6px;
   &:hover {
     cursor: pointer;
   }
+  ${FONT_STYLES.H3_BOLD}
 `;
 
-const StTitleFormat = styled.b`
-  position: absolute;
-  left: 24px;
+const StAddTitle = styled.span`
+  margin-top: 33px;
+  ${FONT_STYLES.B1_BOLD};
 `;
 
-const StAddTitle = styled(StTitleFormat)`
-  top: 210px;
-  ${FONT_STYLES.B1_BOLD}
-`;
-
-const StMakeTitle = styled(StTitleFormat)`
-  top: 80px;
+const StMakeTitle = styled.span`
+  margin-top: 29px;
   ${FONT_STYLES.B2_REGULAR}
 `;
 
@@ -123,7 +124,8 @@ const StButtonWrapper = styled.button`
 
 const StFormatWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 28px;
+  position: relative;
   display: flex;
   justify-content: center;
 `;
