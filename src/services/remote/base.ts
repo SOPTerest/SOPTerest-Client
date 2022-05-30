@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASEURL = '3.39.22.91:8000';
+const BASEURL = 'http://3.39.22.91:8000';
 
 const baseHeaders = {
   Accept: `*/*`,
