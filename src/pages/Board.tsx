@@ -4,17 +4,34 @@ import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 import { MOCK_DATA } from '../services/mock/data';
 import useToast from '../hooks/useToast';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { BoardInfo } from '../types';
+import { useNavigate, useParams } from 'react-router-dom';
+import { service } from '../services';
 
 export default function Board() {
   const { showToast } = useToast();
+  const [boardInfo, setBoardInfo] = useState<Pick<BoardInfo, 'title' | 'savedTime'> | undefined>();
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const getBoardInfo = async () => {
+    if (!id) return navigate('/');
+    const response = await service.getBoardDetail(id);
+    response && setBoardInfo(response);
+  };
+  useEffect(() => {
+    getBoardInfo();
+  }, []);
   return (
     <StWrapper>
       <button onClick={() => showToast('보드를 만들었습니다!', 'COMPLETE')}>토스트 test</button>
       <StHeader>
         <IcBack /> <IcViewMore />
       </StHeader>
-      <StTitle>바닷가</StTitle>
-      <StCreateAt>방금</StCreateAt>
+      <StTitle>{boardInfo?.title}</StTitle>
+      <StCreateAt>{boardInfo?.savedTime}</StCreateAt>
       <StProfile>
         <img src={MOCK_DATA.USER.image} alt="profile-image" />
         <img src={icPlus} />
