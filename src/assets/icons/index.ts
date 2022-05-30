@@ -1,7 +1,6 @@
 export { ReactComponent as IcSearch } from './icon_search.svg';
 export { default as icPlus } from './icon_plus.svg';
 export { ReactComponent as IcPlus } from './icon_plus.svg';
-export { default as icPlus } from './icon_plus.svg';
 export { ReactComponent as IcSearchGray1 } from './icon_search_gray_1.svg';
 export { ReactComponent as IcPlusGray1 } from './icon_plus_gray_1.svg';
 export { default as icSetting } from './icon_setting.svg';
