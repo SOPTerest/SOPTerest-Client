@@ -9,7 +9,5 @@ function getAPIMethod() {
 
 export interface Service {
   getBoardDetail(boardID: string): Promise<Pick<BoardInfo, 'title' | 'savedTime'>>;
-  getUserInfo(
-    userId: string,
-  ): Promise<Pick<UserInfo, 'userId' | 'nickname' | 'followingCnt' | 'followerCnt'>>;
+  getUserInfo(userId: string): Promise<Omit<UserInfo, 'id'>>;
 }

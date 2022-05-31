@@ -39,8 +39,7 @@ export default function MyPage() {
     { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
     { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
   ];
-  const [userInfo, setUserInfo] =
-    useState<Pick<UserInfo, 'userId' | 'nickname' | 'followingCnt' | 'followerCnt'>>();
+  const [userInfo, setUserInfo] = useState<Omit<UserInfo, 'id'>>();
   const [open, setOpen] = useState<boolean>(false);
 
   const toggleModal = () => {
@@ -48,8 +47,8 @@ export default function MyPage() {
   };
 
   const getUserInfo = async () => {
-    const id = MOCK_DATA.MYPAGE_USER.id;
-    const response = await service.getUserInfo(id);
+    const userId = MOCK_DATA.USER.userId;
+    const response = await service.getUserInfo(userId);
     response && setUserInfo(response);
   };
 
