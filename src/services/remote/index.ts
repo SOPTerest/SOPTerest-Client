@@ -13,5 +13,17 @@ export function remoteService(): Service {
     else throw '서버 통신 실패';
   };
 
-  return { getBoardDetail };
+  const getUserInfo = async (userId: string) => {
+    const response = await API.get({ url: `/user/${userId}` });
+    if (response.success)
+      return {
+        userId: response.data.userId,
+        nickname: response.data.nickname,
+        followerCnt: response.data.followerCnt,
+        followingCnt: response.data.followingCnt,
+      };
+    else throw '서버 통신 실패';
+  };
+
+  return { getBoardDetail, getUserInfo };
 }

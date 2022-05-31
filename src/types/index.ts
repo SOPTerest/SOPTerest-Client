@@ -15,3 +15,11 @@ export interface Toast {
   mode: ToastMode;
   message: string;
 }
+
+export interface UserInfo {
+  id: string;
+  userId: string;
+  nickname: string;
+  followingCnt: number;
+  followerCnt: number;
+}

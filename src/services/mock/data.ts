@@ -10,4 +10,7 @@ export const MOCK_DATA = {
     name: '바닷가',
     pinList: [],
   },
+  MYPAGE_USER: {
+    id: '62904389d917606ee855ee04',
+  },
 };
