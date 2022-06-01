@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IcBack } from '../assets/icons';
 import BoardFormToast from '../components/BoardFormToast';
+import { service } from '../services';
 import { COLOR } from '../styles/color';
 import { FONT_STYLES } from '../styles/font';
+import { CreateBoardBody } from '../types';
 
 export default function BoardForm() {
   const navigate = useNavigate();
@@ -28,8 +30,15 @@ export default function BoardForm() {
     setTitle(e.target.value);
   };
 
-  const goBoard = () => {
-    if (title.length > 0) navigate(`/board/id들어갈곳`);
+  const createBoard = async () => {
+    const body: CreateBoardBody = {
+      boardName: title,
+      updateTime: '0',
+      writer: '6290e84b9d0e342c69c78f0e',
+    };
+    const response = await service.createBoard(body);
+
+    if (title.length > 0) navigate(`/board/${response.boardId}`);
   };
 
   const goBack = () => {
@@ -41,7 +50,7 @@ export default function BoardForm() {
       <StHeaderWrapper>
         <StIcBack onClick={goBack} />
         <StHeaderTitle>보드 만들기</StHeaderTitle>
-        <StCreateButton isActive={isActive} onClick={goBoard}>
+        <StCreateButton isActive={isActive} onClick={createBoard}>
           만들기
         </StCreateButton>
       </StHeaderWrapper>
@@ -56,7 +65,7 @@ export default function BoardForm() {
 
 const StWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100%; // 이거 지워야 함
   display: flex;
   flex-direction: column;
   align-items: center;
