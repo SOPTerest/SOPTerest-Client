@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { IcBack } from '../assets/icons';
 import BoardFormToast from '../components/BoardFormToast';
+import useToast from '../hooks/useToast';
 import { service } from '../services';
 import { COLOR } from '../styles/color';
 import { FONT_STYLES } from '../styles/font';
@@ -14,6 +15,8 @@ export default function BoardForm() {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isToast, setIsToast] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
+
+  const { showToast } = useToast();
 
   useEffect(() => {
     if (isToast) {
@@ -31,6 +34,7 @@ export default function BoardForm() {
   };
 
   const createBoard = async () => {
+    if (!isActive) return;
     const body: BoardCreateRequestBody = {
       boardName: title,
       updateTime: '0',
@@ -38,7 +42,10 @@ export default function BoardForm() {
     };
     const response = await service.createBoard(body);
 
-    if (title.length > 0) navigate(`/board/${response.boardId}`);
+    if (response.isSuccess) {
+      showToast('보드를 만들었습니다!', 'COMPLETE');
+      navigate(`/board/${response.boardId}`);
+    }
   };
 
   const goBack = () => {
