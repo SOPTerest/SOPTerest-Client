@@ -12,7 +12,17 @@ export function mockService(): Service {
     return { boardId: '6294a5c795d4a7e07140547a', isSuccess: true };
   };
 
-  return { getBoardDetail, createBoard };
+  const getUserInfo = async () => {
+    await wait(2000);
+    return {
+      userId: 'cheeze123',
+      nickname: '치즈',
+      followingCnt: 54,
+      followerCnt: 36,
+    };
+  };
+
+  return { getBoardDetail, getUserInfo, createBoard };
 }
 
 const wait = (milliSeconds: number) => new Promise((resolve) => setTimeout(resolve, milliSeconds));

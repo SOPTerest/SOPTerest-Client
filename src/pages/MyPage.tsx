@@ -4,16 +4,12 @@ import { IcSearch, IcPlus, icSetting } from '../assets/icons';
 import { BoardInfo, BoardPinInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
+import { service } from '../services';
+import { UserInfo } from '../types';
+import { MOCK_DATA } from '../services/mock/data';
 import BoardList from '../components/BoardList';
 import MyPageNavigation from '../components/MyPageNavigation';
 import BottomSheet from '../components/BottomSheet';
-
-interface MyPageUserInfo {
-  userId: string;
-  nickname: string;
-  followerCnt: number;
-  followingCnt: number;
-}
 
 export default function MyPage() {
   const boardList: BoardPinInfo[] = [
@@ -43,15 +39,21 @@ export default function MyPage() {
     { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
     { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
   ];
-  const [userInfo, setUserInfo] = useState<MyPageUserInfo>();
+  const [userInfo, setUserInfo] = useState<Omit<UserInfo, 'id'>>();
   const [open, setOpen] = useState<boolean>(false);
 
   const toggleModal = () => {
     setOpen((prev: boolean) => !prev);
   };
 
+  const getUserInfo = async () => {
+    const userId = MOCK_DATA.USER.userId;
+    const response = await service.getUserInfo(userId);
+    response && setUserInfo(response);
+  };
+
   useEffect(() => {
-    setUserInfo({ userId: 'cheeze123', nickname: '치즈', followerCnt: 36, followingCnt: 54 });
+    getUserInfo();
   }, []);
 
   return (
