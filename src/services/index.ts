@@ -1,10 +1,10 @@
 import { BoardInfo, UserInfo } from '../types';
-import { mockService } from './mock';
+import { remoteService } from './remote';
 
 export const service = getAPIMethod();
 
 function getAPIMethod() {
-  return mockService();
+  return remoteService();
 }
 
 export interface Service {

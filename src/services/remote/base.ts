@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASEURL = 'http://3.39.22.91:8000';
+const BASEURL = 'https://sopterest.ml';
 
 const baseHeaders = {
   Accept: `*/*`,

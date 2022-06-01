@@ -17,6 +17,7 @@ export default function Board() {
   const navigate = useNavigate();
 
   const getBoardInfo = async () => {
+    console.log(id);
     if (!id) return navigate('/');
     const response = await service.getBoardDetail(id);
     response && setBoardInfo(response);
