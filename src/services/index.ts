@@ -1,12 +1,13 @@
-import { BoardInfo } from '../types';
-import { mockService } from './mock';
+import { BoardInfo, UserInfo } from '../types';
+import { remoteService } from './remote';
 
 export const service = getAPIMethod();
 
 function getAPIMethod() {
-  return mockService();
+  return remoteService();
 }
 
 export interface Service {
   getBoardDetail(boardID: string): Promise<Pick<BoardInfo, 'title' | 'savedTime'>>;
+  getUserInfo(userId: string): Promise<Omit<UserInfo, 'id'>>;
 }
