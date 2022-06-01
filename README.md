@@ -1,5 +1,7 @@
 # SOPTerest-Client
 
+SOPT 30기 합동 세미나 5조
+
 ## 브랜치 전략📚
 
 git flow 전략을 기반으로 개발 브랜치와 기능 브랜치를 두기로 함 (개발 브랜치-main) 
