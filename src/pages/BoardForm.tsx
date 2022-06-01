@@ -65,7 +65,6 @@ export default function BoardForm() {
 
 const StWrapper = styled.div`
   width: 100%;
-  height: 100%; // 이거 지워야 함
   display: flex;
   flex-direction: column;
   align-items: center;
