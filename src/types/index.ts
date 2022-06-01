@@ -16,6 +16,12 @@ export interface Toast {
   message: string;
 }
 
+export type BoardCreateRequestBody = {
+  boardName: string;
+  updateTime: string;
+  writer: string;
+};
+
 export interface UserInfo {
   id: string;
   userId: string;
