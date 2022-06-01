@@ -33,6 +33,7 @@ const StWrapper = styled.li`
 `;
 const StPinImageWrapper = styled.article`
   width: 100%;
+  height: fit-content;
   display: grid;
   grid-template-columns: 115px 57px;
   grid-template-rows: 57px 57px;
@@ -42,6 +43,7 @@ const StPinImageWrapper = styled.article`
 `;
 const StImageWrapper = styled.div<{ idx: number }>`
   width: 100%;
+  height: 114px;
   ${({ idx }) =>
     idx === 1 &&
     css`
@@ -52,7 +54,6 @@ const StImageWrapper = styled.div<{ idx: number }>`
   ${({ idx }) =>
     idx === 2 &&
     css`
-      width: 100%;
       height: 100%;
       grid-column: 2/3;
       grid-row: 2/3;
