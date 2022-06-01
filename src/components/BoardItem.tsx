@@ -11,11 +11,21 @@ export default function BoardItem({ board }: BoardItemProps) {
   return (
     <StWrapper>
       <StPinImageWrapper>
-        {board.imageList.slice(0, 3).map((pinImage: string, idx: number) => (
-          <StImageWrapper idx={idx} key={idx}>
-            <StPinImage src={pinImage} />
-          </StImageWrapper>
-        ))}
+        {board.imageList.length ? (
+          board.imageList.slice(0, 3).map((pinImage: string, idx: number) => (
+            <StImageWrapper idx={idx} key={idx}>
+              <StPinImage src={pinImage} />
+            </StImageWrapper>
+          ))
+        ) : (
+          <>
+            {Array.from({ length: 3 }, (v, i) => i).map((idx) => (
+              <StImageWrapper key={idx} idx={idx}>
+                <div></div>
+              </StImageWrapper>
+            ))}
+          </>
+        )}
       </StPinImageWrapper>
 
       <StPinInfoWrapper>
@@ -37,13 +47,13 @@ const StPinImageWrapper = styled.article`
   display: grid;
   grid-template-columns: 115px 57px;
   grid-template-rows: 57px 57px;
-  grid-gap: 0.5px 1px;
+  grid-gap: 1px 1px;
   border-radius: 13px;
   overflow: hidden;
 `;
 const StImageWrapper = styled.div<{ idx: number }>`
   width: 100%;
-  height: 114px;
+  height: 115px;
   ${({ idx }) =>
     idx === 1 &&
     css`
@@ -58,6 +68,11 @@ const StImageWrapper = styled.div<{ idx: number }>`
       grid-column: 2/3;
       grid-row: 2/3;
     `}
+    & > div {
+    width: 100%;
+    height: 100%;
+    background-color: ${COLOR.GRAY_300};
+  }
 `;
 const StPinImage = styled.img`
   width: inherit;
