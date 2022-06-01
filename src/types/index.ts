@@ -1,11 +1,7 @@
-export interface BoardPinInfo {
-  id: number;
-  pinImg: string;
-}
 export interface BoardInfo {
   id: number;
   title: string;
-  boardList: BoardPinInfo[];
+  boardList: string[];
   savedTime: string;
 }
 
@@ -22,4 +18,10 @@ export interface UserInfo {
   nickname: string;
   followingCnt: number;
   followerCnt: number;
+}
+export interface BoardListInfo {
+  boardName: string;
+  imageList: string[];
+  pinCnt: number;
+  updateTime: string;
 }

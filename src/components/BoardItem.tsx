@@ -1,27 +1,27 @@
 import styled, { css } from 'styled-components';
-import { BoardInfo, BoardPinInfo } from '../types';
+import { BoardListInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 
 interface BoardItemProps {
-  board: BoardInfo;
+  board: BoardListInfo;
 }
 
 export default function BoardItem({ board }: BoardItemProps) {
   return (
     <StWrapper>
       <StPinImageWrapper>
-        {board.boardList.slice(0, 3).map(({ id, pinImg }: BoardPinInfo) => (
-          <StImageWrapper idx={id} key={id}>
-            <StPinImage src={pinImg} />
+        {board.imageList.slice(0, 3).map((pinImage: string, idx: number) => (
+          <StImageWrapper idx={idx} key={idx}>
+            <StPinImage src={pinImage} />
           </StImageWrapper>
         ))}
       </StPinImageWrapper>
 
       <StPinInfoWrapper>
-        <StPinTitle>{board.title}</StPinTitle>
-        <StPinCount>핀 {board.boardList.length}개</StPinCount>
-        <StPinSavedTime>{board.savedTime}</StPinSavedTime>
+        <StPinTitle>{board.boardName}</StPinTitle>
+        <StPinCount>핀 {board.pinCnt}개</StPinCount>
+        <StPinSavedTime>{board.updateTime}</StPinSavedTime>
       </StPinInfoWrapper>
     </StWrapper>
   );

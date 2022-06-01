@@ -1,4 +1,5 @@
 import { Service } from '..';
+import { BoardListInfo } from '../../types';
 import { getRelativeTime } from '../../utils/time';
 import { API } from './base';
 
@@ -25,5 +26,17 @@ export function remoteService(): Service {
     else throw '서버 통신 실패';
   };
 
-  return { getBoardDetail, getUserInfo };
+  const getBoardList = async (userId: string) => {
+    const response = await API.get({ url: `/board/list/${userId}` });
+    if (response.success) {
+      return response.data.map((res: BoardListInfo) => ({
+        boardName: res.boardName,
+        imageList: res.imageList,
+        pinCnt: res.pinCnt,
+        updateTime: getRelativeTime(new Date(res.updateTime)),
+      }));
+    } else throw '서버 통신 실패';
+  };
+
+  return { getBoardDetail, getUserInfo, getBoardList };
 }
