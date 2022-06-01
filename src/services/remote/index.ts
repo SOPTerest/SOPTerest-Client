@@ -1,5 +1,5 @@
 import { Service } from '..';
-import { CreateBoardBody } from '../../types';
+import { BoardCreateRequestBody } from '../../types';
 import { getRelativeTime } from '../../utils/time';
 import { API } from './base';
 
@@ -14,11 +14,12 @@ export function remoteService(): Service {
     else throw '서버 통신 실패';
   };
 
-  const createBoard = async (body: CreateBoardBody) => {
+  const createBoard = async (body: BoardCreateRequestBody) => {
     const response = await API.post({ url: `/board`, data: body });
     if (response.success)
       return {
         boardId: response.data._id,
+        isSuccess: true,
       };
     else throw '서버 통신 실패';
   };

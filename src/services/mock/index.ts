@@ -9,7 +9,7 @@ export function mockService(): Service {
 
   const createBoard = async () => {
     await wait(2000);
-    return { boardId: '6294a5c795d4a7e07140547a' };
+    return { boardId: '6294a5c795d4a7e07140547a', isSuccess: true };
   };
 
   return { getBoardDetail, createBoard };

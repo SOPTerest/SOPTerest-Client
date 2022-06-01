@@ -6,7 +6,7 @@ import BoardFormToast from '../components/BoardFormToast';
 import { service } from '../services';
 import { COLOR } from '../styles/color';
 import { FONT_STYLES } from '../styles/font';
-import { CreateBoardBody } from '../types';
+import { BoardCreateRequestBody } from '../types';
 
 export default function BoardForm() {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ export default function BoardForm() {
   };
 
   const createBoard = async () => {
-    const body: CreateBoardBody = {
+    const body: BoardCreateRequestBody = {
       boardName: title,
       updateTime: '0',
       writer: '6290e84b9d0e342c69c78f0e',
