@@ -15,3 +15,13 @@ export interface Toast {
   mode: ToastMode;
   message: string;
 }
+
+export type CreateBoardBody = {
+  boardName: string;
+  updateTime: string;
+  writer: string;
+};
+
+export type BoardID = {
+  boardId: string;
+};
