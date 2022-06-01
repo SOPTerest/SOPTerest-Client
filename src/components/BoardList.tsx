@@ -10,8 +10,8 @@ export default function BoardList({ boardList }: BoardListProps) {
   return (
     <StWrapper>
       <StBoardListWrapper>
-        {boardList.map((board: BoardListInfo) => (
-          <BoardItem board={board} key={board.boardName} />
+        {boardList.map((board: BoardListInfo, idx: number) => (
+          <BoardItem board={board} key={idx} />
         ))}
       </StBoardListWrapper>
     </StWrapper>
