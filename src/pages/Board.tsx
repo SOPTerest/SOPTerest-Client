@@ -25,7 +25,7 @@ export default function Board() {
   return (
     <StWrapper>
       <StHeader>
-        <IcBack /> <IcViewMore />
+        <IcBack onClick={() => navigate('/')} /> <IcViewMore />
       </StHeader>
       <StTitle>{boardInfo?.title}</StTitle>
       <StCreateAt>{boardInfo?.savedTime}</StCreateAt>
