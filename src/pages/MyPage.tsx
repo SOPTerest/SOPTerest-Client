@@ -67,7 +67,7 @@ export default function MyPage() {
       </StTabWrapper>
 
       {boardInfo && <BoardList boardList={boardInfo} />}
-      <MyPageNavigation toggleModal={toggleModal} />
+      <MyPageNavigation onToggleModal={toggleModal} />
       {open && <BottomSheet onToggleModal={toggleModal} />}
     </StWrapper>
   );
