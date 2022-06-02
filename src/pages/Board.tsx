@@ -14,14 +14,14 @@ export default function Board() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const getBoardInfo = async () => {
-    if (!id) return navigate('/');
-    const response = await service.getBoardDetail(id);
-    response && setBoardInfo(response);
-  };
   useEffect(() => {
-    getBoardInfo();
-  }, []);
+    (async () => {
+      if (!id) return navigate('/');
+      const response = await service.getBoardDetail(id);
+      response && setBoardInfo(response);
+    })();
+  }, [id, navigate]);
+
   return (
     <StWrapper>
       <StHeader>

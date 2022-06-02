@@ -10,7 +10,7 @@ export default function Toast() {
 
   useEffect(() => {
     if (toast.mode) hideToast();
-  }, [toast]);
+  }, [toast, hideToast]);
 
   switch (toast.mode) {
     case 'COMPLETE':
