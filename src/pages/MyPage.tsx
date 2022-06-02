@@ -78,7 +78,6 @@ const StWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
-  margin-top: 97px;
 `;
 const StHeader = styled.header`
   display: flex;
