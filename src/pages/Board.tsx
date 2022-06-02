@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 import { MOCK_DATA } from '../services/mock/data';
-import useToast from '../hooks/useToast';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { BoardInfo } from '../types';
@@ -11,7 +10,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { service } from '../services';
 
 export default function Board() {
-  const { showToast } = useToast();
   const [boardInfo, setBoardInfo] = useState<Pick<BoardInfo, 'title' | 'savedTime'> | undefined>();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -26,9 +24,8 @@ export default function Board() {
   }, []);
   return (
     <StWrapper>
-      <button onClick={() => showToast('보드를 만들었습니다!', 'COMPLETE')}>토스트 test</button>
       <StHeader>
-        <IcBack /> <IcViewMore />
+        <IcBack onClick={() => navigate('/')} /> <IcViewMore />
       </StHeader>
       <StTitle>{boardInfo?.title}</StTitle>
       <StCreateAt>{boardInfo?.savedTime}</StCreateAt>
