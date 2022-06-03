@@ -1,27 +1,14 @@
 import GlobalStyle from './styles/global';
 import Router from './components/Router';
-import Toast from './components/common/Toast';
-import styled from 'styled-components';
+import Toast from './components/common/toast';
 import { RecoilRoot } from 'recoil';
 
 export default function App() {
   return (
     <RecoilRoot>
-      <StWrapper>
-        <GlobalStyle />
-        <Router />
-        <Toast />
-      </StWrapper>
+      <GlobalStyle />
+      <Toast />
+      <Router />
     </RecoilRoot>
   );
 }
-
-const StWrapper = styled.div`
-  position: relative;
-  & > * {
-    position: absolute;
-  }
-  & > *:first-child {
-    z-index: 1000;
-  }
-`;

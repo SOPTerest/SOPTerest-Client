@@ -1,5 +1,5 @@
 import { Service } from '..';
-import { BoardListInfo } from '../../types';
+import { BoardCreateRequestBody, Res } from '../../types';
 import { getRelativeTime } from '../../utils/time';
 import { API } from './base';
 
@@ -10,6 +10,16 @@ export function remoteService(): Service {
       return {
         title: response.data.boardName,
         savedTime: getRelativeTime(new Date(response.data.createdAt)),
+      };
+    else throw '서버 통신 실패';
+  };
+
+  const createBoard = async (body: BoardCreateRequestBody) => {
+    const response = await API.post({ url: `/board`, data: body });
+    if (response.success)
+      return {
+        boardId: response.data._id,
+        isSuccess: true,
       };
     else throw '서버 통신 실패';
   };
@@ -28,8 +38,9 @@ export function remoteService(): Service {
 
   const getBoardList = async (userId: string) => {
     const response = await API.get({ url: `/board/list/${userId}` });
+
     if (response.success) {
-      return response.data.map((res: BoardListInfo) => ({
+      return response.data.map((res: Res) => ({
         boardName: res.boardName,
         imageList: res.imageList,
         pinCnt: res.pinCnt,
@@ -38,5 +49,5 @@ export function remoteService(): Service {
     } else throw '서버 통신 실패';
   };
 
-  return { getBoardDetail, getUserInfo, getBoardList };
+  return { getBoardDetail, createBoard, getUserInfo, getBoardList };
 }
