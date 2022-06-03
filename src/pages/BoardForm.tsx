@@ -100,6 +100,7 @@ const StCreateButton = styled.button<{ isActive: boolean }>`
   color: ${(props) => (props.isActive ? `${COLOR.WHITE}` : `${COLOR.GRAY_100}`)};
   border: 0;
   outline: 0;
+  ${FONT_STYLES.B1_BOLD}
   &:hover {
     cursor: pointer;
   }
