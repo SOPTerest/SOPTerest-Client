@@ -6,12 +6,12 @@ import { API } from './base';
 export function remoteService(): Service {
   const getBoardDetail = async (boardID: string) => {
     const response = await API.get({ url: `/board/${boardID}` });
-    if (response.success)
+    if (response.success) {
       return {
         title: response.data.boardName,
-        savedTime: getRelativeTime(new Date(response.data.updateTime)),
+        savedTime: getRelativeTime(new Date(response.data.updatedAt)),
       };
-    else throw '서버 통신 실패';
+    } else throw '서버 통신 실패';
   };
 
   const createBoard = async (body: BoardCreateRequestBody) => {
