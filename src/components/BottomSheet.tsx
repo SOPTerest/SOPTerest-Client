@@ -121,6 +121,7 @@ const StButtonWrapper = styled.button`
   &:hover {
     cursor: pointer;
   }
+  color: ${COLOR.BLACK};
 `;
 
 const StFormatWrapper = styled.div`
