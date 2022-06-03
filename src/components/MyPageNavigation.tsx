@@ -38,4 +38,5 @@ const StNavProfile = styled.img`
   height: 24px;
   border-radius: 50%;
   margin: 0 12px;
+  object-fit: cover;
 `;
