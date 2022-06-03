@@ -7,7 +7,6 @@ export function remoteService(): Service {
   const getBoardDetail = async (boardID: string) => {
     const response = await API.get({ url: `/board/${boardID}` });
     if (response.success) {
-      console.log(response.data);
       return {
         title: response.data.boardName,
         savedTime: getRelativeTime(new Date(response.data.updateTime)),
