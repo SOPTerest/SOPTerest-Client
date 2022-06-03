@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import { BoardInfo } from '../types';
+import { BoardListInfo } from '../types';
 import BoardItem from './BoardItem';
 
 interface BoardListProps {
-  boardList: BoardInfo[];
+  boardList: BoardListInfo[];
 }
 
 export default function BoardList({ boardList }: BoardListProps) {
   return (
     <StWrapper>
       <StBoardListWrapper>
-        {boardList.map((board: BoardInfo) => (
-          <BoardItem board={board} key={board.id} />
+        {boardList.map((board: BoardListInfo, idx: number) => (
+          <BoardItem board={board} key={idx} />
         ))}
       </StBoardListWrapper>
     </StWrapper>

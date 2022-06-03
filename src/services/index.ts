@@ -1,4 +1,4 @@
-import { BoardInfo, BoardCreateRequestBody, UserInfo } from '../types';
+import { BoardInfo, BoardCreateRequestBody, UserInfo, BoardListInfo } from '../types';
 import { remoteService } from './remote';
 
 export const service = getAPIMethod();
@@ -14,4 +14,5 @@ export interface Service {
     isSuccess: boolean;
   }>;
   getUserInfo(userId: string): Promise<Omit<UserInfo, 'id'>>;
+  getBoardList(userId: string): Promise<BoardListInfo[]>;
 }

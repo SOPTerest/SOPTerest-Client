@@ -1,27 +1,43 @@
 import styled, { css } from 'styled-components';
-import { BoardInfo, BoardPinInfo } from '../types';
+import { BoardListInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
+import { useNavigate } from 'react-router-dom';
 
 interface BoardItemProps {
-  board: BoardInfo;
+  board: BoardListInfo;
 }
 
 export default function BoardItem({ board }: BoardItemProps) {
+  const navigate = useNavigate();
+
+  const onClickBoardItem = () => {
+    navigate(`/board/${board.boardId}`);
+  };
   return (
     <StWrapper>
-      <StPinImageWrapper>
-        {board.boardList.slice(0, 3).map(({ id, pinImg }: BoardPinInfo) => (
-          <StImageWrapper idx={id} key={id}>
-            <StPinImage src={pinImg} />
-          </StImageWrapper>
-        ))}
+      <StPinImageWrapper onClick={onClickBoardItem}>
+        {board.imageList.length ? (
+          board.imageList.slice(0, 3).map((pinImage: string, idx: number) => (
+            <StImageWrapper idx={idx} key={idx}>
+              <StPinImage src={pinImage} />
+            </StImageWrapper>
+          ))
+        ) : (
+          <>
+            {Array.from({ length: 3 }, (_v, i) => i).map((idx) => (
+              <StImageWrapper key={idx} idx={idx}>
+                <div></div>
+              </StImageWrapper>
+            ))}
+          </>
+        )}
       </StPinImageWrapper>
 
       <StPinInfoWrapper>
-        <StPinTitle>{board.title}</StPinTitle>
-        <StPinCount>핀 {board.boardList.length}개</StPinCount>
-        <StPinSavedTime>{board.savedTime}</StPinSavedTime>
+        <StPinTitle>{board.boardName}</StPinTitle>
+        <StPinCount>핀 {board.pinCnt}개</StPinCount>
+        <StPinSavedTime>{board.updateTime}</StPinSavedTime>
       </StPinInfoWrapper>
     </StWrapper>
   );
@@ -33,15 +49,17 @@ const StWrapper = styled.li`
 `;
 const StPinImageWrapper = styled.article`
   width: 100%;
+  height: fit-content;
   display: grid;
   grid-template-columns: 115px 57px;
   grid-template-rows: 57px 57px;
-  grid-gap: 0.5px 1px;
+  grid-gap: 1px 1px;
   border-radius: 13px;
   overflow: hidden;
 `;
 const StImageWrapper = styled.div<{ idx: number }>`
   width: 100%;
+  height: 115px;
   ${({ idx }) =>
     idx === 1 &&
     css`
@@ -52,11 +70,15 @@ const StImageWrapper = styled.div<{ idx: number }>`
   ${({ idx }) =>
     idx === 2 &&
     css`
-      width: 100%;
       height: 100%;
       grid-column: 2/3;
       grid-row: 2/3;
     `}
+    & > div {
+    width: 100%;
+    height: 100%;
+    background-color: ${COLOR.GRAY_300};
+  }
 `;
 const StPinImage = styled.img`
   width: inherit;

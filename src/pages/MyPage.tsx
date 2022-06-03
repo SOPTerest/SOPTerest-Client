@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { useState, useEffect } from 'react';
 import { IcSearch, IcPlus, icSetting } from '../assets/icons';
-import { BoardInfo, BoardPinInfo } from '../types';
+import { BoardListInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
 import { service } from '../services';
@@ -12,33 +12,7 @@ import MyPageNavigation from '../components/MyPageNavigation';
 import BottomSheet from '../components/BottomSheet';
 
 export default function MyPage() {
-  const boardList: BoardPinInfo[] = [
-    {
-      id: 0,
-      pinImg:
-        'https://images.unsplash.com/photo-1553272725-086100aecf5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80',
-    },
-    {
-      id: 1,
-      pinImg:
-        'https://images.unsplash.com/photo-1652816437851-2eab839b89ad?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387',
-    },
-    {
-      id: 2,
-      pinImg:
-        'https://images.unsplash.com/photo-1652487346667-b89061ca7b40?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465',
-    },
-    {
-      id: 3,
-      pinImg:
-        'https://images.unsplash.com/photo-1638913658828-afb88c3d4d11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-    },
-  ];
-  const boardInfo: BoardInfo[] = [
-    { id: 0, title: '자연', boardList: boardList, savedTime: '방금' },
-    { id: 1, title: '바닷가', boardList: boardList, savedTime: '방금' },
-    { id: 2, title: '제주도', boardList: boardList, savedTime: '방금' },
-  ];
+  const [boardInfo, setBoardInfo] = useState<BoardListInfo[]>();
   const [userInfo, setUserInfo] = useState<Omit<UserInfo, 'id'>>();
   const [open, setOpen] = useState<boolean>(false);
 
@@ -52,8 +26,15 @@ export default function MyPage() {
     response && setUserInfo(response);
   };
 
+  const getBoardListInfo = async () => {
+    const userId = MOCK_DATA.USER.userId;
+    const response = await service.getBoardList(userId);
+    response && setBoardInfo(response);
+  };
+
   useEffect(() => {
     getUserInfo();
+    getBoardListInfo();
   }, []);
 
   return (
@@ -67,7 +48,7 @@ export default function MyPage() {
         <StIcon src={icSetting} />
       </StHeader>
 
-      <StProfileImage src="https://images.unsplash.com/photo-1638913658828-afb88c3d4d11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
+      <StProfileImage src="https://images.unsplash.com/photo-1566496875470-68ada46a38c5?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170" />
       {userInfo && (
         <StProfileInfoWrapper>
           <StUserName>{userInfo.nickname}</StUserName>
@@ -85,8 +66,8 @@ export default function MyPage() {
         <StTab active={true}>저장됨</StTab>
       </StTabWrapper>
 
-      <BoardList boardList={boardInfo} />
-      <MyPageNavigation toggleModal={toggleModal} />
+      {boardInfo && <BoardList boardList={boardInfo} />}
+      <MyPageNavigation onToggleModal={toggleModal} />
       {open && <BottomSheet onToggleModal={toggleModal} />}
     </StWrapper>
   );
@@ -97,7 +78,6 @@ const StWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
-  margin-top: 97px;
 `;
 const StHeader = styled.header`
   display: flex;
@@ -138,7 +118,7 @@ const StProfileImage = styled.img`
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: fill;
+  object-fit: cover;
   padding-bottom: 3px;
 `;
 const StProfileInfoWrapper = styled(FlexColumnBox)`
@@ -146,19 +126,16 @@ const StProfileInfoWrapper = styled(FlexColumnBox)`
 `;
 const StUserName = styled.h1`
   ${FONT_STYLES.H1_BOLD};
-  font-size: 36px;
 `;
 const StUserId = styled.p`
   ${FONT_STYLES.B2_REGULAR};
   color: ${COLOR.GRAY_100};
-  font-size: 16px;
   padding: 2px 0 19px 0;
 `;
 const StFollowInfoWrapper = styled.div`
   ${FONT_STYLES.B1_BOLD};
   display: flex;
   gap: 17px;
-  font-size: 16px;
 `;
 const StShareButton = styled.button`
   ${FONT_STYLES.B1_BOLD};
@@ -167,7 +144,6 @@ const StShareButton = styled.button`
   align-items: center;
   width: 60px;
   height: 48px;
-  font-size: 16px;
   background-color: ${COLOR.GRAY_300};
   border-radius: 24px;
 `;

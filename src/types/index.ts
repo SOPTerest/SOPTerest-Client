@@ -1,11 +1,9 @@
-export interface BoardPinInfo {
-  id: number;
-  pinImg: string;
-}
+import { z } from 'zod';
+
 export interface BoardInfo {
   id: number;
   title: string;
-  boardList: BoardPinInfo[];
+  boardList: string[];
   savedTime: string;
 }
 
@@ -18,7 +16,6 @@ export interface Toast {
 
 export type BoardCreateRequestBody = {
   boardName: string;
-  updateTime: string;
   writer: string;
 };
 
@@ -29,3 +26,19 @@ export interface UserInfo {
   followingCnt: number;
   followerCnt: number;
 }
+export interface BoardListInfo {
+  boardId: string;
+  boardName: string;
+  imageList: string[];
+  pinCnt: number;
+  updateTime: string;
+}
+const Res = z.object({
+  boardId: z.string(),
+  boardName: z.string(),
+  imageList: z.array(z.string()),
+  pinCnt: z.number(),
+  updateTime: z.date(),
+});
+
+export type Res = z.infer<typeof Res>;
