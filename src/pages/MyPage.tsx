@@ -146,6 +146,7 @@ const StShareButton = styled.button`
   height: 48px;
   background-color: ${COLOR.GRAY_300};
   border-radius: 24px;
+  color: ${COLOR.BLACK};
 `;
 const StTabWrapper = styled.div`
   display: flex;

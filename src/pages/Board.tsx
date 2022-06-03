@@ -129,6 +129,8 @@ const StButtonWrapper = styled.div`
 `;
 
 const StEmptyPin = styled.div`
-  padding: 87px 78px 256px 78px;
+  width: 100%;
+  padding: 87px 0 256px 0;
   ${FONT_STYLES.B2_REGULAR}
+  text-align: center;
 `;
