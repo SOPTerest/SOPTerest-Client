@@ -44,7 +44,7 @@ export default function MyPage() {
           <StSearchInput />
           <StSearchIcon />
         </StSearchBarWrapper>
-        <IcPlus />
+        <IcPlus onClick={toggleModal} />
         <StIcon src={icSetting} />
       </StHeader>
 
