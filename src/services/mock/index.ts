@@ -26,6 +26,7 @@ export function mockService(): Service {
     await wait(2000);
     return [
       {
+        boardId: '62909dd893d51890d626f09a',
         boardName: '자연',
         imageList: [
           'https://images.unsplash.com/photo-1553272725-086100aecf5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80',

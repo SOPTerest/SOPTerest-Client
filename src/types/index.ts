@@ -28,12 +28,14 @@ export interface UserInfo {
   followerCnt: number;
 }
 export interface BoardListInfo {
+  boardId: string;
   boardName: string;
   imageList: string[];
   pinCnt: number;
   updateTime: string;
 }
 const Res = z.object({
+  boardId: z.string(),
   boardName: z.string(),
   imageList: z.array(z.string()),
   pinCnt: z.number(),

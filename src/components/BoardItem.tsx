@@ -2,15 +2,21 @@ import styled, { css } from 'styled-components';
 import { BoardListInfo } from '../types';
 import { FONT_STYLES } from '../styles/font';
 import { COLOR } from '../styles/color';
+import { useNavigate } from 'react-router-dom';
 
 interface BoardItemProps {
   board: BoardListInfo;
 }
 
 export default function BoardItem({ board }: BoardItemProps) {
+  const navigate = useNavigate();
+
+  const onClickBoardList = () => {
+    navigate(`/board/${board.boardId}`);
+  };
   return (
     <StWrapper>
-      <StPinImageWrapper>
+      <StPinImageWrapper onClick={onClickBoardList}>
         {board.imageList.length ? (
           board.imageList.slice(0, 3).map((pinImage: string, idx: number) => (
             <StImageWrapper idx={idx} key={idx}>

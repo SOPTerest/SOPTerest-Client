@@ -41,6 +41,7 @@ export function remoteService(): Service {
 
     if (response.success) {
       return response.data.map((res: Res) => ({
+        boardId: res.boardId,
         boardName: res.boardName,
         imageList: res.imageList,
         pinCnt: res.pinCnt,
