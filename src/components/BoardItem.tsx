@@ -11,12 +11,12 @@ interface BoardItemProps {
 export default function BoardItem({ board }: BoardItemProps) {
   const navigate = useNavigate();
 
-  const onClickBoardList = () => {
+  const onClickBoardItem = () => {
     navigate(`/board/${board.boardId}`);
   };
   return (
     <StWrapper>
-      <StPinImageWrapper onClick={onClickBoardList}>
+      <StPinImageWrapper onClick={onClickBoardItem}>
         {board.imageList.length ? (
           board.imageList.slice(0, 3).map((pinImage: string, idx: number) => (
             <StImageWrapper idx={idx} key={idx}>
@@ -25,7 +25,7 @@ export default function BoardItem({ board }: BoardItemProps) {
           ))
         ) : (
           <>
-            {Array.from({ length: 3 }, (v, i) => i).map((idx) => (
+            {Array.from({ length: 3 }, (_v, i) => i).map((idx) => (
               <StImageWrapper key={idx} idx={idx}>
                 <div></div>
               </StImageWrapper>
