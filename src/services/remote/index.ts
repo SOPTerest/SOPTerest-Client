@@ -9,7 +9,7 @@ export function remoteService(): Service {
     if (response.success)
       return {
         title: response.data.boardName,
-        savedTime: getRelativeTime(new Date(response.data.createdAt)),
+        savedTime: getRelativeTime(new Date(response.data.updateTime)),
       };
     else throw '서버 통신 실패';
   };
