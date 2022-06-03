@@ -126,19 +126,16 @@ const StProfileInfoWrapper = styled(FlexColumnBox)`
 `;
 const StUserName = styled.h1`
   ${FONT_STYLES.H1_BOLD};
-  font-size: 36px;
 `;
 const StUserId = styled.p`
   ${FONT_STYLES.B2_REGULAR};
   color: ${COLOR.GRAY_100};
-  font-size: 16px;
   padding: 2px 0 19px 0;
 `;
 const StFollowInfoWrapper = styled.div`
   ${FONT_STYLES.B1_BOLD};
   display: flex;
   gap: 17px;
-  font-size: 16px;
 `;
 const StShareButton = styled.button`
   ${FONT_STYLES.B1_BOLD};
@@ -147,7 +144,6 @@ const StShareButton = styled.button`
   align-items: center;
   width: 60px;
   height: 48px;
-  font-size: 16px;
   background-color: ${COLOR.GRAY_300};
   border-radius: 24px;
 `;
