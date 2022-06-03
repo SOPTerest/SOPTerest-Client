@@ -7,9 +7,10 @@ export function remoteService(): Service {
   const getBoardDetail = async (boardID: string) => {
     const response = await API.get({ url: `/board/${boardID}` });
     if (response.success) {
+      console.log(response.data);
       return {
         title: response.data.boardName,
-        savedTime: getRelativeTime(new Date(response.data.updatedAt)),
+        savedTime: getRelativeTime(new Date(response.data.updateTime)),
       };
     } else throw '서버 통신 실패';
   };

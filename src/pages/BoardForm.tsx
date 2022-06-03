@@ -37,8 +37,7 @@ export default function BoardForm() {
     if (!isActive) return;
     const body: BoardCreateRequestBody = {
       boardName: title,
-      updateTime: '0',
-      writer: '6290e84b9d0e342c69c78f0e',
+      writer: '62904389d917606ee855ee04',
     };
     const response = await service.createBoard(body);
 
